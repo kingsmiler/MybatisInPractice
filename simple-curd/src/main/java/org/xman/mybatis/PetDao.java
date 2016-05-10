@@ -10,13 +10,13 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 
-public class Main {
+public class PetDao {
 
     public static void main(String[] args) {
         try {
-            Main main = new Main();
+            PetDao petDao = new PetDao();
             // Printing pets data
-            List<PetDVO> allPets = main.getAllPetsData();
+            List<PetDVO> allPets = petDao.getAllPetsData();
             System.out.println("--- allPets ----" + allPets.size());
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -50,5 +50,23 @@ public class Main {
         HashMap<String, String> inputMap = new HashMap<String, String>();
         inputMap.put("sex", sex);
         return getSqlSession().selectList("selectPets", inputMap);
+    }
+
+    public void createPet(PetDVO petDVO) throws Exception {
+        HashMap<String, Object> inputMap = new HashMap<String, Object>();
+
+        inputMap.put("name", petDVO.getName());
+        inputMap.put("owner", petDVO.getOwner());
+        inputMap.put("species", petDVO.getSpecies());
+        inputMap.put("sex", petDVO.getSex());
+        inputMap.put("birth", petDVO.getBirth());
+
+        // Get the sql session and commit the data
+        SqlSession sqlSession = getSqlSession();
+        sqlSession.insert("createPet", inputMap);
+        sqlSession.commit();
+
+        // Printing the generated sequence number
+        System.out.println("--- Id value ---" + inputMap.get("id"));
     }
 }

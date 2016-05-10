@@ -12,8 +12,8 @@ GRANT ALL PRIVILEGES ON mybatis.* TO 'mybatis'@'%';
 USE mybatis;
 
 CREATE TABLE pet (
-  name    VARCHAR(20),
   id      MEDIUMINT NOT NULL AUTO_INCREMENT,
+  name    VARCHAR(20),
   owner   VARCHAR(20),
   species VARCHAR(20),
   sex     CHAR(1),
