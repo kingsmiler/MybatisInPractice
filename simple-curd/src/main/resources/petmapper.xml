@@ -50,16 +50,29 @@
     </select>
 
     <insert id="createPet" parameterType="java.util.Map">
-
         INSERT INTO pet
-        (NAME, OWNER, SPECIES, SEX, BIRTH)
+            (NAME, OWNER, SPECIES, SEX, BIRTH)
         VALUES
-        (#{name}, #{owner}, #{species}, #{sex}, #{birth} )
+            (#{name}, #{owner}, #{species}, #{sex}, #{birth} )
 
         <selectKey keyProperty="id" resultType="int" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
     </insert>
+
+    <update id="updatePetData" parameterType="java.util.Map">
+        UPDATE pet p
+          SET p.birth = #{birth}, p.sex = #{sex}
+          WHERE p.name = #{name}
+    </update>
+
+    <delete id="deletePet" parameterType="java.util.Map">
+        DELETE FROM pet
+          WHERE
+              name = #{name}
+          AND
+              species = #{species}
+    </delete>
 
     <resultMap id="petResultMap" type="PetDVO">
         <id property="sex" column="sex"/>

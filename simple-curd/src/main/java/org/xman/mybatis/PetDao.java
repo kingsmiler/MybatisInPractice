@@ -12,17 +12,6 @@ import java.util.List;
 
 public class PetDao {
 
-    public static void main(String[] args) {
-        try {
-            PetDao petDao = new PetDao();
-            // Printing pets data
-            List<PetDVO> allPets = petDao.getAllPetsData();
-            System.out.println("--- allPets ----" + allPets.size());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
     private static SqlSession getSqlSession() throws Exception {
         String resource = "mybatis-config.xml";
         InputStream inputStream =
@@ -37,7 +26,7 @@ public class PetDao {
     }
 
     public PetDVO getPetObject(String petName) throws Exception {
-        HashMap<String, String> inputMap = new HashMap<String, String>();
+        HashMap<String, String> inputMap = new HashMap<>();
         inputMap.put("name", petName);
         return (PetDVO) getSqlSession().selectOne("getPetObject", inputMap);
     }
@@ -47,13 +36,13 @@ public class PetDao {
     }
 
     public List<PetDVO> selectPets(String sex) throws Exception {
-        HashMap<String, String> inputMap = new HashMap<String, String>();
+        HashMap<String, String> inputMap = new HashMap<>();
         inputMap.put("sex", sex);
         return getSqlSession().selectList("selectPets", inputMap);
     }
 
     public void createPet(PetDVO petDVO) throws Exception {
-        HashMap<String, Object> inputMap = new HashMap<String, Object>();
+        HashMap<String, Object> inputMap = new HashMap<>();
 
         inputMap.put("name", petDVO.getName());
         inputMap.put("owner", petDVO.getOwner());
@@ -68,5 +57,26 @@ public class PetDao {
 
         // Printing the generated sequence number
         System.out.println("--- Id value ---" + inputMap.get("id"));
+    }
+
+    public void updatePetData(PetDVO petDVO) throws Exception {
+        HashMap<String, Object> inputMap = new HashMap<>();
+        inputMap.put("birth", petDVO.getBirth());
+        inputMap.put("sex", petDVO.getSex());
+        inputMap.put("name", petDVO.getName());
+        SqlSession sqlSession = getSqlSession();
+        sqlSession.update("updatePetData", inputMap);
+        sqlSession.commit();
+    }
+
+    public void deletePet(PetDVO petDVO) throws Exception {
+        HashMap<String, String> inputMap = new HashMap<>();
+        inputMap.put("species", petDVO.getSpecies());
+        inputMap.put("name", petDVO.getName());
+
+        System.out.println("--- try to delete Pet ---" + inputMap);
+        SqlSession sqlSession = getSqlSession();
+        sqlSession.update("deletePet", inputMap);
+        sqlSession.commit();
     }
 }

@@ -22,6 +22,27 @@ public class PetDaoTest {
     }
 
     @Test
+    public void testUpdatePetData() throws Exception {
+        // Setting the data into a domain object
+        PetDVO pet = new PetDVO();
+        pet.setName("Slimmmy");
+        pet.setSex("f");
+        pet.setBirth(new Date());
+
+        petDao.updatePetData(pet);
+    }
+
+    @Test
+    public void testDeletePet() throws Exception {
+        PetDVO petDataObj = new PetDVO();
+        petDataObj.setName("Slimmy1");
+        petDataObj.setSpecies("snake");
+
+        petDao.deletePet(petDataObj);
+    }
+
+
+    @Test
     public void testGetAllPetsData() throws Exception {
         List<PetDVO> allPets = petDao.getAllPetsData();
         System.out.println("--- allPets ----" + allPets.size());
