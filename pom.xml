@@ -17,6 +17,7 @@
 
     <modules>
         <module>simple-curd</module>
+        <module>simple-spring-crud</module>
     </modules>
 
     <dependencies>
@@ -47,6 +48,12 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
+                <version>4.2.6.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
                 <version>4.2.6.RELEASE</version>
             </dependency>
 
