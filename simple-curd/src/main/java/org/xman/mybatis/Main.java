@@ -24,7 +24,7 @@ public class Main {
     }
 
     private static SqlSession getSqlSession() throws Exception {
-        String resource = "core-mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         InputStream inputStream =
                 Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new

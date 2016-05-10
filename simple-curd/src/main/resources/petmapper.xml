@@ -8,25 +8,25 @@
         SELECT ID as id, NAME as name, OWNER as owner,
         SPECIES as species,
         SEX as sex, BIRTH as birth, DEATH as death
-        FROM Pet
+        FROM pet
     </select>
 
     <select id="getPetObject" parameterType="java.lang.String"
             resultType="PetDVO">
         SELECT ID as id, NAME as name, OWNER as owner,SPECIES as species,
         SEX as sex, BIRTH as birth, DEATH as death
-        FROM Pet where name = #{name}
+        FROM pet where name = #{name}
     </select>
 
     <select id="getAllSpecies" resultType="java.lang.String">
-        SELECT distinct(SPECIES) as species FROM Pet
+        SELECT distinct(SPECIES) as species FROM pet
     </select>
 
     <select id="selectPets" parameterType="java.lang.String"
             resultMap="petResultMap">
         SELECT ID as id, NAME as name, OWNER as owner, SPECIES as species,
         SEX as sex, BIRTH as birth, DEATH as death
-        FROM Pet where SEX = #{sex}
+        FROM pet where SEX = #{sex}
     </select>
 
     <resultMap id="petResultMap" type="PetDVO">

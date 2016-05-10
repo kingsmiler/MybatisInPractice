@@ -1,3 +1,5 @@
+DROP DATABASE `mybatis`;
+
 CREATE DATABASE IF NOT EXISTS `mybatis`
   CHARACTER SET utf8
   COLLATE utf8_general_ci;
@@ -22,7 +24,7 @@ CREATE TABLE pet (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE USER (
+CREATE TABLE user (
   id         MEDIUMINT NOT NULL AUTO_INCREMENT,
   first_name CHAR(30)  NULL,
   last_name  CHAR(30)  NULL,

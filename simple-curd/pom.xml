@@ -12,6 +12,7 @@
     <artifactId>simple-curd</artifactId>
     <packaging>jar</packaging>
 
+
     <build>
         <plugins>
             <plugin>
