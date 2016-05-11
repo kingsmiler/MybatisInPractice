@@ -12,6 +12,12 @@
     <artifactId>simple-curd</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.xman.mybatis</groupId>
+            <artifactId>simple-common</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
