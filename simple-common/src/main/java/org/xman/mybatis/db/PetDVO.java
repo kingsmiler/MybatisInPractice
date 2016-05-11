@@ -67,4 +67,17 @@ public class PetDVO implements Serializable {
     public void setDeath(Date death) {
         this.death = death;
     }
+
+    @Override
+    public String toString() {
+        return "PetDVO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", owner='" + owner + '\'' +
+                ", species='" + species + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birth=" + birth +
+                ", death=" + death +
+                '}';
+    }
 }

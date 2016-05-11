@@ -21,16 +21,44 @@ public class PetDaoTest {
     private PetDAO petDAO;
 
     @Test
+    public void testGetAllPetsData() throws Exception {
+        List<PetDVO> list = petDAO.getAllPetsData();
+        System.out.println(list.size());
+    }
+
+    @Test
+    public void testGetAllSpecies() throws Exception {
+
+        List<String> list = petDAO.getAllSpecies();
+        System.out.println(list.size());
+    }
+
+    @Test
+    public void testGetPetObject() throws Exception {
+        PetDVO pet = petDAO.getPetObject("Sunny");
+
+        System.out.println(pet);
+    }
+
+    @Test
+    public void testSelectPets() throws Exception {
+        List<PetDVO> pet = petDAO.selectPets("m");
+
+        System.out.println(pet);
+    }
+
+    @Test
     public void testCreatePet() throws Exception {
         PetDVO pet = new PetDVO();
-        pet.setName("Sunny");
+        pet.setName("Xman");
         pet.setOwner("Wang");
-        pet.setSpecies("snake");
+        pet.setSpecies("monkey");
         pet.setBirth(new Date());
         pet.setSex("m");
 
-        List<PetDVO> list = petDAO.getAllPetsData();
-        System.out.println(list.size());
+        int id = petDAO.createPet(pet);
+
+        System.out.println(id);
     }
 
 }
