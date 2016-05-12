@@ -19,6 +19,7 @@
         <module>simple-curd</module>
         <module>simple-spring-crud</module>
         <module>simple-common</module>
+        <module>mybatis-annotation-sample</module>
     </modules>
 
     <dependencies>
